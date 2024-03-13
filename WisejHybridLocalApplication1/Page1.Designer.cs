@@ -28,7 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.button1 = new Wisej.Web.Button();
+			this.GameCanvas = new Wisej.Web.PictureBox();
+			this.Ticker = new Wisej.Web.Timer(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -40,14 +44,27 @@
 			this.button1.Text = "Click Me!";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// GameCanvas
+			// 
+			this.GameCanvas.BorderStyle = Wisej.Web.BorderStyle.Solid;
+			this.GameCanvas.Location = new System.Drawing.Point(65, 217);
+			this.GameCanvas.Name = "GameCanvas";
+			this.GameCanvas.Size = new System.Drawing.Size(640, 480);
+			// 
+			// Ticker
+			// 
+			this.Ticker.Tick += new System.EventHandler(this.Ticker_Tick);
+			// 
 			// Page1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
+			this.Controls.Add(this.GameCanvas);
 			this.Controls.Add(this.button1);
 			this.Name = "Page1";
-			this.Size = new System.Drawing.Size(1246, 642);
+			this.Size = new System.Drawing.Size(1229, 559);
 			this.Text = "Page1";
+			((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -55,6 +72,8 @@
 		#endregion
 
 		private Wisej.Web.Button button1;
+		private Wisej.Web.PictureBox GameCanvas;
+		private Wisej.Web.Timer Ticker;
 	}
 }
 
