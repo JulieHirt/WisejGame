@@ -50,6 +50,7 @@
 			this.GameCanvas.Location = new System.Drawing.Point(65, 217);
 			this.GameCanvas.Name = "GameCanvas";
 			this.GameCanvas.Size = new System.Drawing.Size(640, 480);
+			this.GameCanvas.Paint += new Wisej.Web.PaintEventHandler(this.GameCanvas_Paint);
 			// 
 			// Ticker
 			// 

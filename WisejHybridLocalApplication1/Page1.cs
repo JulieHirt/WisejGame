@@ -47,5 +47,10 @@ namespace WisejHybridLocalApplication1
 		{
 			AlertBox.Show("tick");
 		}
+
+		private void GameCanvas_Paint(object sender, PaintEventArgs e)
+		{
+			//render GameObjects on the canvas
+		}
 	}
 }
