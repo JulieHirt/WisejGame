@@ -1,6 +1,9 @@
 ﻿using Wisej.Web;
 using Wisej.Hybrid;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System;
 
 namespace WisejHybridLocalApplication1
 {
@@ -46,11 +49,33 @@ namespace WisejHybridLocalApplication1
 		private void Ticker_Tick(object sender, System.EventArgs e)
 		{
 			AlertBox.Show("tick");
+			// redraw game canvas
+			GameCanvas.Invalidate();
 		}
 
 		private void GameCanvas_Paint(object sender, PaintEventArgs e)
 		{
 			//render GameObjects on the canvas
+
+			GameObject player = new GameObject(5, 5);//x,y
+
+
+			//Get access to the assembly. 
+			System.Reflection.Assembly assembly = this.GetType().Assembly;
+			//Use the assembly to find an embedded resource based on the parameter imageString
+			string resourceName = assembly.GetManifestResourceNames().FirstOrDefault(name => name.EndsWith("Player.png"));
+			if (!String.IsNullOrEmpty(resourceName))
+			{
+				//create a System.Drawing.Image object
+				System.IO.Stream resource = assembly.GetManifestResourceStream(resourceName);
+				Image image = Image.FromStream(resource);
+
+				Point point = new Point(player.X * FIELD_DIMENSION, player.Y * FIELD_DIMENSION);
+				e.Graphics.DrawImage(image, point);
+			}
+
 		}
+
+
 	}
 }
